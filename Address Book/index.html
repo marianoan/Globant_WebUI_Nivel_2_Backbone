@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>WebUI Nivel 2 Agenda de contactos</title>
+	
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h2 class="section_title">Address Book</h2>
+		</hgroup>
+	</header> <!-- end of header bar -->
+	
+	<section id="secondary_bar">
+	</section><!-- end of secondary bar -->
+	
+	<aside id="sidebar" class="column">
+		<h3></h3>
+		<ul class="toggle">
+            <li class="icn_view_users"><a href="#">List Contacts</a></li>
+            <li class="icn_add_user"><a href="#">New contact</a></li>
+        </ul>
+	</aside><!-- end of sidebar -->
+	
+	<section id="main" class="column">
+		
+		<h4 class="alert_info" id="alert">Alert</h4>
+		
+        <article class="module width_full" id="contact_list">
+            <header>
+                <h3 class="tabs_involved">Contacts</h3>
+            </header>
+            <table class="tablesorter" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Mobile phone</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="contacts_table">
+                </tbody>
+            </table>
+
+
+        </article><!-- end of content manager article -->
+		
+		
+		<div class="clear"></div>
+		
+		<article class="module width_full" id="new_contact_form">
+			<header><h3>New Contact</h3></header>
+				<div class="module_content">
+                    <form id="new_contact_form">
+                        <fieldset>
+                            <label>Name</label>
+                            <input type="text" id="new_name_input" placeholder="First and last name">
+                        </fieldset>
+                        <fieldset>
+                            <label>Address</label>
+                            <input type="text" id="new_address_input" placeholder="Complete address">
+                        </fieldset>
+                        <fieldset>
+                            <label>Mobile phone</label>
+                            <input type="text" id="new_mobile_input" placeholder="Enter the mobile phone number">
+                        </fieldset>
+                        <fieldset>
+                            <label>Phone</label>
+                            <input type="text" id="new_phone_input" placeholder="Enter the phone number">
+                        </fieldset>
+                        <fieldset>
+                            <label>Email</label>
+                            <input type="text" id="new_email_input" placeholder="Enter the email address">
+                        </fieldset>
+                        <div class="clear"></div>
+                    </form>
+				</div>
+			<footer>
+				<div class="submit_link">
+					<input type="submit" value="Save" class="alt_btn" id="save_button">
+					<input type="submit" value="Reset" id="reset_button">
+				</div>
+			</footer>
+		</article><!-- end of new conctact -->
+		
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+<div id="edit_contact_dialog" title="Edit user">
+        <form id="edit_contact_form">
+            <input type="hidden" id="edit_id_input">
+            <fieldset>
+                <label>Name</label>
+                <input type="text" id="edit_name_input">
+            </fieldset>
+            <fieldset>
+                <label>Address</label>
+                <input type="text" id="edit_address_input">
+            </fieldset>
+            <fieldset>
+                <label>Mobile phone</label>
+                <input type="text" id="edit_mobile_input">
+            </fieldset>
+            <fieldset>
+                <label>Phone</label>
+                <input type="text" id="edit_phone_input">
+            </fieldset>
+            <fieldset>
+                <label>Email</label>
+                <input type="text" id="edit_email_input">
+            </fieldset>
+            <div class="clear"></div>
+        </form>
+</div><!-- end of edit conctact -->
+
+</html>

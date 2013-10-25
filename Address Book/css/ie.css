@@ -1,0 +1,25 @@
+
+.toggleLink {
+display: inline;
+float: none;
+margin-left: 2%
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover  {
+background: #ccc;
+}
+
+
+fieldset input[type=text] {
+margin-left: -10px;
+}
+
+
+fieldset select {
+margin-left: -10px
+}
+
+fieldset textarea {
+margin-left: -10px;
+}
+
