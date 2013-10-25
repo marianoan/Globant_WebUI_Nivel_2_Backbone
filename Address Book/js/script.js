@@ -3,16 +3,22 @@ var contact_list = [];
 
 
 
-function forEach(list,callback) {
-    for (var n = 0; n < list.length; n++) {
-        callback.call(list[n]);
+function forEach(list, callback) {
+    if (list !== null) {
+        for (var n = 0; n < list.length; n++) {
+            callback.call(list[n]);
+        }
     }
+    
 }
 
 //Retrieve contacts from localStorage
 function retrieveContacts() {
     var retrievedObject = localStorage.getItem('contacts_list');
-    contact_list = JSON.parse(retrievedObject);
+    if (retrievedObject !== null) {
+        contact_list = JSON.parse(retrievedObject);
+    }
+    
 }
 
 //Save contacts to localStorage
@@ -40,6 +46,7 @@ function update_table(contacts,$table) {
     $(".remove_contact").on("click", function () {
         contact_list.splice(this.id, 1);
         update_table(contact_list, $("#contacts_table"));
+        saveContacts();
     });
 
     //Function to edit
@@ -87,7 +94,6 @@ $(document).ready(function () {
             
         }
     });
-
     update_table(contact_list, $("#contacts_table"));
     $(".tablesorter").tablesorter();
     $("#contact_list").show();

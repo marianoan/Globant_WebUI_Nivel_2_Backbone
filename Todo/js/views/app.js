@@ -125,7 +125,6 @@ app.AppView = Backbone.View.extend({
     // New
     toggleAllComplete: function () {
         var completed = this.allCheckbox.checked;
-
         app.Todos.each(function (todo) {
             todo.save({
                 'completed': completed
