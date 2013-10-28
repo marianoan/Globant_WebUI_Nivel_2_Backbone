@@ -19,5 +19,5 @@ var ContactList = Backbone.Collection.extend({
         return contact.get('order');
     }
 });
-.
+
 app.Contacts = new ContactList();
