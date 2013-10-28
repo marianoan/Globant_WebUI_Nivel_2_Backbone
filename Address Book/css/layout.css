@@ -188,7 +188,7 @@ margin: 0 5px;
 /* Sidebar */
 
 aside#sidebar {
-width: 23%;
+width: 15%;
 background: #E0E0E3 url(../images/sidebar.png) repeat;
 float: left;
 height: 100%;
@@ -282,7 +282,7 @@ margin-top: 20%;
 
 
 section#main {
-width: 77%;
+width: 85%;
 height: 100%;
 background: url(../images/sidebar_shadow.png) repeat-y left top;
 float: left;

@@ -1,85 +1,92 @@
 ﻿var app = app || {};
 
-// Todo Item View
-// --------------
+// Contact View
 
-// The DOM element for a todo item...
 app.ContactView = Backbone.View.extend({
 
-    //... is a list tag.
+    //Cada item es un tr.
     tagName: 'tr',
 
-    // Cache the template function for a single item.
+    // El template para cada item.
     template: _.template($('#item-template').html()),
-
-    // The DOM events specific to an item.
+    
+    // Los eventos de cada item.
     events: {
-        'click .toggle': 'toggleActive', // NEW
-        'dblclick label': 'edit',
-        'click .destroy': 'clear',           // NEW
+        'click .edit': 'edit',
+        'click .destroy': 'clear',
+        'click #edit_button': 'close', 
     },
 
-    // The TodoView listens for changes to its model, re-rendering. Since there's
-    // a one-to-one correspondence between a **Todo** and a **TodoView** in this
-    // app, we set a direct reference on the model for convenience.
     initialize: function () {
-        this.listenTo(this.model, 'change', this.render);
-        this.listenTo(this.model, 'destroy', this.remove);        // NEW
-        this.listenTo(this.model, 'visible', this.toggleVisible); // NEW
+        this.listenTo(this.model, 'destroy', this.remove); 
     },
 
-    // Re-renders the titles of the todo item.
+    //Renderea todo el item.
     render: function () {
         this.$el.html(this.template(this.model.toJSON()));
-        this.$el.toggleClass('active', this.model.get('active')); // NEW
-        this.toggleVisible();
-        this.$input_new_name = this.$('#new_name_input');
-        this.$input_new_address = this.$('#new_address_input');
-        this.$input_new_mobile = this.$('#new_mobile_input');
-        this.$input_new_phone = this.$('#new_phone_input');
-        this.$input_new_email = this.$('#new_email_input');
+
+        this.$td_name_input = this.$('#td_name_input');
+        this.$td_address_input = this.$('#td_address_input');
+        this.$td_mobile_input = this.$('#td_mobile_input');
+        this.$td_phone_input = this.$('#td_phone_input');
+        this.$td_email_input = this.$('#td_email_input');
+        this.$td_edit_button = this.$('#td_edit_button');
+
+        this.$name_input = this.$('#edit_name_input');
+        this.$address_input = this.$('#edit_address_input');
+        this.$mobile_input = this.$('#edit_mobile_input');
+        this.$phone_input = this.$('#edit_phone_input');
+        this.$email_input = this.$('#edit_email_input');
+
+        this.$name = this.$('#name');
+        this.$address = this.$('#address');
+        this.$mobile = this.$('#mobile');
+        this.$phone = this.$('#phone');
+        this.$email = this.$('#email');
+        this.$actions = this.$('#actions');
+
         return this;
     },
 
-    // NEW - Toggles visibility of item
-    toggleVisible: function () {
-        this.$el.toggleClass('hidden', this.isHidden());
-        
-    },
+    
 
-    // NEW - Determines if item should be hidden
-    isHidden: function () {
-        var isActive = this.model.get('active');
-        return ( // hidden cases only
-            (!isActive)
-        );
-    },
-
-    // NEW - Toggle the `"completed"` state of the model.
-    toggleActive: function () {
-        this.model.toggle();
-    },
-
-    // NEW - Remove the item, destroy the model from *localStorage* and delete its view.
+    //Borra el item.
     clear: function () {
         this.model.destroy();
     },
 
-    // Switch this view into `"editing"` mode, displaying the input field.
     edit: function () {
-        this.$el.addClass('editing');
-        this.$input.focus();
+        this.$name.hide();
+        this.$address.hide();
+        this.$mobile.hide();
+        this.$phone.hide();
+        this.$email.hide();
+        this.$actions.hide();
+
+        this.$td_name_input.show();
+        this.$td_address_input.show();
+        this.$td_mobile_input.show();
+        this.$td_phone_input.show();
+        this.$td_email_input.show();
+        this.$td_edit_button.show();
+
+        this.$name_input.focus();
     },
 
-    // Close the `"editing"` mode, saving changes to the todo.
+    //Cierro la vista de edicion y guardo el item.
     close: function () {
-        var value = this.$input.val().trim();
+        var name = this.$name_input.val().trim();
+        var address = this.$address_input.val().trim();
+        var mobile = this.$mobile_input.val().trim();
+        var phone = this.$phone_input.val().trim();
+        var email = this.$email_input.val().trim();
 
-        if (value) {
-            this.model.save({ title: value });
+
+        if (name) {
+            this.model.save({ name: name, address: address, mobile: mobile, phone: phone, email: email });
+            this.render();
         }
 
-        this.$el.removeClass('editing');
     }
 
    

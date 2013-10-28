@@ -11,14 +11,19 @@
 
 <body>
     <script type="text/template" id="item-template">
-            <td><input class="toggle" type="checkbox"<%= active ? 'checked' : '' %>></td>
-            <td><%- name %></td>
-            <td><%- address %></td>
-            <td><%- mobile %></td>
-            <td><%- phone %></td>
-            <td><%- email %></td>
-            <td><input type="image" src="images/icn_edit.png" title="Edit"><input class="destroy" type="image" src="images/icn_trash.png" title="Trash"></td>
-    </script>
+        <td id="name"><%- name %></td>
+        <td id="address"><%- address %></td>
+        <td id="mobile"><%- mobile %></td>
+        <td id="phone"><%- phone %></td>
+        <td id="email"><%- email %></td>
+        <td id="actions"><input class="edit" type="image" src="images/icn_edit.png" title="Edit"><input class="destroy" type="image" src="images/icn_trash.png" title="Trash"></td>
+        <td class="hidden" id="td_name_input"><input type="text" id="edit_name_input" value="<%- name %>"></td>
+        <td class="hidden" id="td_address_input"><input type="text" id="edit_address_input" value="<%- address %>"></td> 
+        <td class="hidden" id="td_mobile_input"><input type="text" id="edit_mobile_input" value="<%- mobile %>"></td>
+        <td class="hidden" id="td_phone_input"><input type="text" id="edit_phone_input" value="<%- phone %>"></td>
+        <td class="hidden" id="td_email_input"><input type="text" id="edit_email_input" value="<%- email %>"></td>  
+        <td class="hidden" id="td_edit_button"><input type="button" value="Save" class="alt_btn" id="edit_button"></td>
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
     <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
@@ -30,7 +35,6 @@
     <script src="js/views/app.js"></script>
     <script src="js/views/contacts.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/routers/router.js"></script>
     <header id="header">
 		<hgroup>
 			<h2 class="section_title">Address Book</h2>
@@ -59,7 +63,6 @@
                 <table class="tablesorter" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Active</th>
                             <th>Name</th>
                             <th>Address</th>
                             <th>Mobile phone</th>
@@ -70,22 +73,6 @@
                     </thead>
                     <tbody id="contacts_table"></tbody>
                 </table>
-                
-                <footer>
-                    <div class="footer">
-                        <ul id="filters">
-                            <li>
-                                <a class="selected" href="#/">All</a>
-                            </li>
-                            <li>
-                                <a href="#/active">Active</a>
-                            </li>
-                            <li>
-                                <a href="#/inactive">Inactive</a>
-                            </li>
-                        </ul>
-                    </div>
-                </footer>
 
             </article><!-- end of content manager article -->
 
