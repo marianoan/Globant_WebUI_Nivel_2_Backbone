@@ -1,14 +1,17 @@
-﻿var app = app || {};
+﻿define([
+  'underscore',
+  'backbone'
+], function (_, Backbone) {
 
-app.Contact = Backbone.Model.extend({
-
-    //Atributos por defecto
-    defaults: {
-        name: '',
-        address: '',
-        mobile: '',
-        phone: '',
-        email: ''
-    }
-
+    var Contact = Backbone.Model.extend({
+        defaults: {
+            name: 'noname',
+            address: 'address',
+            mobile: 'mobile',
+            phone: 'phone',
+            email: 'email'
+        }
+    });
+    // Return the model for the module
+    return Contact;
 });

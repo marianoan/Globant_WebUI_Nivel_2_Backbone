@@ -1,23 +1,30 @@
-﻿var app = app || {};
+﻿define([
+  'underscore',
+  'backbone',
+  'localStorage',
+  'models/Contact',
+], function (_, Backbone, localStorage,Contact) {
 
+    var Contacts = Backbone.Collection.extend({
+        model: Contact,
 
-var ContactList = Backbone.Collection.extend({
+        localStorage: new localStorage('contact_list_backbone'),
 
-    model: app.Contact,
+        //url: "js/collection.html",
 
-    localStorage: new Backbone.LocalStorage('contact_list_backbone'),
+        nextOrder: function () {
+            if (!this.length) {
+                return 1;
+            }
+            return this.last().get('order') + 1;
+        },
 
-   
-    nextOrder: function () {
-        if (!this.length) {
-            return 1;
+        comparator: function (contact) {
+            return contact.get('order');
         }
-        return this.last().get('order') + 1;
-    },
 
-    comparator: function (contact) {
-        return contact.get('order');
-    }
+
+    });
+    // You don't usually return a collection instantiated
+    return Contacts;
 });
-
-app.Contacts = new ContactList();
