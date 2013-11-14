@@ -12,8 +12,6 @@
         //Cada item es un tr.
         tagName: 'tr',
 
-        // El template para cada item.
-        //template: _.template($('#item-template').html()),
         
 
         // Los eventos de cada item.
@@ -24,7 +22,6 @@
         },
 
         initialize: function () {
-            //this.model = new Contact();
             this.listenTo(this.model, 'destroy', this.remove);
             this.template = _.template(ContactTemplate);
             

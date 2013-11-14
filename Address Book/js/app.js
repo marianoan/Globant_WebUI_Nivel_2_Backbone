@@ -50,7 +50,6 @@
                 mobile: this.$input_new_mobile.val().trim(),
                 phone: this.$input_new_phone.val().trim(),
                 email: this.$input_new_email.val().trim(),
-                order: this.collection.nextOrder()
             };
         },
 
